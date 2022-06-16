@@ -12,7 +12,7 @@ class Expense {
     var name: String
     var sum: Int?
     var count: Int?
-    var listExpenses: [Expenses]?
+    var listExpenses = [Expenses]()
     
     init (name: String) {
         self.name = name
@@ -20,6 +20,12 @@ class Expense {
 }
 
 class Expenses {
-    var name: String?
-    var sum: Int?
+    var name: String
+    var sum: Int
+    
+    init (name: String, sum: Int) {
+        self.name = name
+        self.sum = sum
+    }
+    
 }

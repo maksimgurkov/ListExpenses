@@ -15,6 +15,7 @@
 		761CD99C2859FE3A00CB7E9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761CD99A2859FE3A00CB7E9D /* LaunchScreen.storyboard */; };
 		761CD9A92859FFA200CB7E9D /* MyListExpensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CD9A82859FFA200CB7E9D /* MyListExpensesTableViewController.swift */; };
 		761CD9AC285A023400CB7E9D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CD9AB285A023400CB7E9D /* Model.swift */; };
+		761CD9AE285B1A1000CB7E9D /* ExpensesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CD9AD285B1A1000CB7E9D /* ExpensesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		761CD99D2859FE3A00CB7E9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		761CD9A82859FFA200CB7E9D /* MyListExpensesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListExpensesTableViewController.swift; sourceTree = "<group>"; };
 		761CD9AB285A023400CB7E9D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		761CD9AD285B1A1000CB7E9D /* ExpensesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				761CD9A82859FFA200CB7E9D /* MyListExpensesTableViewController.swift */,
+				761CD9AD285B1A1000CB7E9D /* ExpensesTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				761CD9972859FE3900CB7E9D /* ListExpenses.xcdatamodeld in Sources */,
 				761CD98D2859FE3900CB7E9D /* AppDelegate.swift in Sources */,
 				761CD9A92859FFA200CB7E9D /* MyListExpensesTableViewController.swift in Sources */,
+				761CD9AE285B1A1000CB7E9D /* ExpensesTableViewController.swift in Sources */,
 				761CD98F2859FE3900CB7E9D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

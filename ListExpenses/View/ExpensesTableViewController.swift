@@ -1,85 +1,85 @@
 //
-//  MyListExpensesTableViewController.swift
+//  ExpensesTableViewController.swift
 //  ListExpenses
 //
-//  Created by Максим Гурков on 15.06.2022.
+//  Created by Максим Гурков on 16.06.2022.
 //
 
 import UIKit
 
-class MyListExpensesTableViewController: UITableViewController {
+class ExpensesTableViewController: UITableViewController {
     
-    var expenses: [Expense] = []
+    var expense: Expense!
+    
+    var expenses: [Expenses]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-    }
 
-    // MARK: - SetupNavigationBar
+    }
     
     private func setupNavigationBar() {
-        title = "Мои расходы"
+        title = expense.name
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
-            action: #selector(newExpenses)
-        )
+            action: #selector(newExpense))
+    }
+    
+    
+    
+    @objc private func newExpense() {
+        alert()
     }
     
     private func alert() {
         let alert = UIAlertController(
             title: "Внимание",
-            message: "Добавьте позицию расходов",
-            preferredStyle: .alert
-        )
-        let newExpenseAction = UIAlertAction(title: "Добавит", style: .default) { _ in
-            guard let nameExpense = alert.textFields?.first?.text, !nameExpense.isEmpty else {return}
-            let newExpense = Expense(name: nameExpense)
+            message: "Добавьте расход",
+            preferredStyle: .alert)
+        let newExpenseAction = UIAlertAction(title: "Добавить", style: .default) { _ in
+            guard let newName = alert.textFields?.first?.text, !newName.isEmpty else { return }
+            guard let newSum = alert.textFields?.last?.text, !newSum.isEmpty else { return }
+            
+            let newExpense = Expenses(name: newName, sum: Int(newSum) ?? 0)
             self.expenses.append(newExpense)
-            self.tableView.insertRows(at: [IndexPath(row: self.expenses.count - 1, section: 0)], with: .automatic)
+            self.tableView.insertRows(at: [IndexPath(row: (self.expenses.count) - 1, section: 0)], with: .automatic)
         }
-        let cancel = UIAlertAction(title: "Назад", style: .destructive)
+        let cancelAction = UIAlertAction(title: "Назад", style: .destructive)
         alert.addAction(newExpenseAction)
-        alert.addAction(cancel)
+        alert.addAction(cancelAction)
         alert.addTextField { textField in
             textField.placeholder = "Имя расхода"
         }
-
+        alert.addTextField { textField in
+            textField.placeholder = "Сумма "
+        }
         present(alert, animated: true)
-        
-    }
-    
-    @objc private func newExpenses() {
-        alert()
     }
     
     
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let expensesVC = segue.destination as? ExpensesTableViewController else {return}
-        guard let index = tableView.indexPathForSelectedRow else { return }
-        expensesVC.expense = expenses[index.row]
-        expensesVC.expenses = expenses[index.row].listExpenses
-    }
     
 }
-
-extension MyListExpensesTableViewController {
     
+// MARK: - Table view data source
+extension ExpensesTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return expenses.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellExpense", for: indexPath)
         var content = cell.defaultContentConfiguration()
         let expense = expenses[indexPath.row]
         content.text = expense.name
-        content.secondaryText = "\(expense.id)"
+        content.secondaryText = "\(expense.sum)"
         cell.contentConfiguration = content
 
         return cell
@@ -121,6 +121,14 @@ extension MyListExpensesTableViewController {
     }
     */
 
+    /*
+    // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
